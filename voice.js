@@ -1,11 +1,9 @@
-export function initVoiceGuide({ button, label, symbol, status, avatar, text, onSpeakingChange = () => {}, onWord = () => {} }, speech, Utterance) {
+export function initVoiceGuide({ button, label, symbol, status, text }, speech, Utterance) {
   let active = null;
   const idleMessage = 'Voz del navegador · sin micrófono.';
 
   function reset(message) {
     active = null;
-    avatar.classList.remove('is-speaking');
-    onSpeakingChange(false);
     button.setAttribute('aria-pressed', 'false');
     label.textContent = 'Escuchar presentación';
     symbol.textContent = '▶';
@@ -55,17 +53,10 @@ export function initVoiceGuide({ button, label, symbol, status, avatar, text, on
 
     utterance.onstart = () => {
       if (active !== utterance) return;
-      avatar.classList.add('is-speaking');
-      onSpeakingChange(true);
       status.textContent = 'Reproduciendo la presentación.';
     };
     utterance.onend = () => {
       if (active === utterance) reset('Presentación finalizada. Podés volver a escucharla.');
-    };
-    utterance.onboundary = event => {
-      if (active !== utterance || event.name !== 'word') return;
-      const word = text.slice(event.charIndex).match(/^\S+/)?.[0];
-      if (word) onWord(word, event.charIndex);
     };
     utterance.onerror = event => {
       if (active !== utterance) return;

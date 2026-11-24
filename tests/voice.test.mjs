@@ -9,11 +9,9 @@ function setup(voices = [{ lang: 'es-AR', localService: true }]) {
   button.disabled = true;
   const attributes = new Map();
   button.setAttribute = (name, value) => attributes.set(name, value);
-  const classes = new Set();
   const elements = {
     button, text,
-    label: {}, symbol: {}, status: {},
-    avatar: { classList: { add: value => classes.add(value), remove: value => classes.delete(value) } }
+    label: {}, symbol: {}, status: {}
   };
   const spoken = [];
   let cancellations = 0;
@@ -23,7 +21,7 @@ function setup(voices = [{ lang: 'es-AR', localService: true }]) {
     cancel: () => { cancellations++; }
   };
   class Utterance { constructor(value) { this.text = value; } }
-  return { elements, speech, Utterance, spoken, classes, attributes, cancelCount: () => cancellations, click: () => button.dispatchEvent(new Event('click')) };
+  return { elements, speech, Utterance, spoken, attributes, cancelCount: () => cancellations, click: () => button.dispatchEvent(new Event('click')) };
 }
 
 test('lee solo la presentación visible, sin reproducción automática, y permite repetir', async () => {
@@ -41,9 +39,9 @@ test('lee solo la presentación visible, sin reproducción automática, y permit
   assert.equal(state.spoken[0].lang, 'es-AR');
   assert.equal(state.spoken[0].voice.name, 'Microsoft Elena Online');
   state.spoken[0].onstart();
-  assert.equal(state.classes.has('is-speaking'), true);
+  assert.equal(state.elements.status.textContent, 'Reproduciendo la presentación.');
   state.spoken[0].onend();
-  assert.equal(state.classes.has('is-speaking'), false);
+  assert.match(state.elements.status.textContent, /finalizada/);
   assert.equal(state.attributes.get('aria-pressed'), 'false');
   state.click();
   assert.equal(state.spoken.length, 2);
@@ -62,27 +60,6 @@ test('detener cancela la narración e ignora eventos de una reproducción anteri
   stop();
   assert.equal(state.cancelCount(), 2);
   assert.equal(state.attributes.get('aria-pressed'), 'false');
-});
-
-test('el avatar recibe inicio, palabras y parada solamente de la narración activa', () => {
-  const state = setup();
-  const speaking = [];
-  const words = [];
-  state.elements.onSpeakingChange = value => speaking.push(value);
-  state.elements.onWord = (word, index) => words.push({ word, index });
-  initVoiceGuide(state.elements, state.speech, state.Utterance);
-  state.click();
-  const utterance = state.spoken[0];
-  assert.deepEqual(speaking, []);
-  utterance.onstart();
-  utterance.onboundary({ name: 'word', charIndex: 0 });
-  utterance.onboundary({ name: 'sentence', charIndex: 0 });
-  assert.deepEqual(speaking, [true]);
-  assert.deepEqual(words, [{ word: 'Cada', index: 0 }]);
-  state.click();
-  utterance.onboundary({ name: 'word', charIndex: 5 });
-  assert.deepEqual(speaking, [true, false]);
-  assert.deepEqual(words, [{ word: 'Cada', index: 0 }]);
 });
 
 test('informa falta de compatibilidad o de voz española sin intentar reproducir', () => {
@@ -104,7 +81,6 @@ test('los errores de audio dejan el control listo para reintentar', t => {
   state.click();
   state.spoken[0].onstart();
   state.spoken[0].onerror({ error: 'synthesis-failed' });
-  assert.equal(state.classes.has('is-speaking'), false);
   assert.equal(state.attributes.get('aria-pressed'), 'false');
   assert.match(state.elements.status.textContent, /No se pudo reproducir/);
   assert.equal(logged.mock.calls.length, 1);

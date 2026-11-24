@@ -29,35 +29,11 @@ function renderCatalog() {
 search.addEventListener('input', renderCatalog);
 renderCatalog();
 
-let presenter;
-let speaking = false;
-let currentWord;
-const introduction = `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`;
-import('./avatar.js').then(async ({ initAvatar3D }) => {
-  presenter = await initAvatar3D(document.querySelector('#voice-avatar'));
-  presenter.setSpeaking(speaking, introduction);
-  if (speaking && currentWord) presenter.setWord(currentWord.word, currentWord.index);
-  document.querySelector('#avatar-status').textContent = 'Simulación 3D · movimiento labial aproximado.';
-}).catch(error => {
-  console.error('No se pudo cargar el avatar 3D:', error);
-  document.querySelector('#avatar-status').textContent = 'La animación 3D no está disponible. Podés escuchar el audio igualmente.';
-});
-
 const stopVoice = initVoiceGuide({
   button: document.querySelector('#voice-toggle'),
   label: document.querySelector('#voice-label'),
   symbol: document.querySelector('#voice-symbol'),
   status: document.querySelector('#voice-status'),
-  avatar: document.querySelector('#voice-avatar'),
-  text: introduction,
-  onSpeakingChange(value) {
-    speaking = value;
-    currentWord = undefined;
-    presenter?.setSpeaking(value, introduction);
-  },
-  onWord(word, index) {
-    currentWord = { word, index };
-    presenter?.setWord(word, index);
-  }
+  text: `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`
 }, window.speechSynthesis, window.SpeechSynthesisUtterance);
 window.addEventListener('pagehide', stopVoice);
