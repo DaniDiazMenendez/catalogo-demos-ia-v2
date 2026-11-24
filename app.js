@@ -29,12 +29,28 @@ function renderCatalog() {
 search.addEventListener('input', renderCatalog);
 renderCatalog();
 
+let presenter;
+let speaking = false;
+import('./avatar.js').then(async ({ initAvatar3D }) => {
+  presenter = await initAvatar3D(document.querySelector('#voice-avatar'));
+  presenter.setSpeaking(speaking);
+  document.querySelector('#avatar-status').textContent = 'Simulación 3D · movimiento labial aproximado.';
+}).catch(error => {
+  console.error('No se pudo cargar el avatar 3D:', error);
+  document.querySelector('#avatar-status').textContent = 'La animación 3D no está disponible. Podés escuchar el audio igualmente.';
+});
+
 const stopVoice = initVoiceGuide({
   button: document.querySelector('#voice-toggle'),
   label: document.querySelector('#voice-label'),
   symbol: document.querySelector('#voice-symbol'),
   status: document.querySelector('#voice-status'),
   avatar: document.querySelector('#voice-avatar'),
-  text: `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`
+  text: `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`,
+  onSpeakingChange(value) {
+    speaking = value;
+    presenter?.setSpeaking(value);
+  },
+  onWord(word) { presenter?.setWord(word); }
 }, window.speechSynthesis, window.SpeechSynthesisUtterance);
 window.addEventListener('pagehide', stopVoice);

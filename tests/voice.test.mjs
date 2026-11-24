@@ -60,6 +60,27 @@ test('detener cancela la narración e ignora eventos de una reproducción anteri
   assert.equal(state.attributes.get('aria-pressed'), 'false');
 });
 
+test('el avatar recibe inicio, palabras y parada solamente de la narración activa', () => {
+  const state = setup();
+  const speaking = [];
+  const words = [];
+  state.elements.onSpeakingChange = value => speaking.push(value);
+  state.elements.onWord = value => words.push(value);
+  initVoiceGuide(state.elements, state.speech, state.Utterance);
+  state.click();
+  const utterance = state.spoken[0];
+  assert.deepEqual(speaking, []);
+  utterance.onstart();
+  utterance.onboundary({ name: 'word', charIndex: 0 });
+  utterance.onboundary({ name: 'sentence', charIndex: 0 });
+  assert.deepEqual(speaking, [true]);
+  assert.deepEqual(words, ['Cada']);
+  state.click();
+  utterance.onboundary({ name: 'word', charIndex: 5 });
+  assert.deepEqual(speaking, [true, false]);
+  assert.deepEqual(words, ['Cada']);
+});
+
 test('informa falta de compatibilidad o de voz española sin intentar reproducir', () => {
   const unsupported = setup();
   initVoiceGuide(unsupported.elements, undefined, undefined);

@@ -14,9 +14,11 @@ test('la publicación cambia las URLs de los módulos según su contenido, inclu
   const app = await readFile(`dist/${appName}`, 'utf8');
   const dataName = app.match(/from '\.\/(data\.[a-f0-9]{12}\.js)'/)?.[1];
   const voiceName = app.match(/from '\.\/(voice\.[a-f0-9]{12}\.js)'/)?.[1];
+  const avatarName = app.match(/import\('\.\/(avatar\.[a-f0-9]{12}\.js)'\)/)?.[1];
   assert.ok(dataName);
   assert.ok(voiceName);
-  for (const [filename, source] of [[appName, app], [styleName, await readFile('style.css', 'utf8')], [dataName, await readFile('data.js', 'utf8')], [voiceName, await readFile('voice.js', 'utf8')]]) {
+  assert.ok(avatarName);
+  for (const [filename, source] of [[appName, app], [styleName, await readFile('style.css', 'utf8')], [dataName, await readFile('data.js', 'utf8')], [voiceName, await readFile('voice.js', 'utf8')], [avatarName, await readFile(`dist/${avatarName}`, 'utf8')]]) {
     const hash = createHash('sha256').update(source).digest('hex').slice(0, 12);
     assert.ok(filename.includes(`.${hash}.`));
     assert.equal(await readFile(`dist/${filename}`, 'utf8'), source);

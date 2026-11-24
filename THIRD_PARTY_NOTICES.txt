@@ -1,0 +1,24 @@
+AVATAR 3D
+
+The virtual presenter is a synthetic 3D character, not a video of a person.
+
+Asset: MPFB example avatar (mpfb.glb)
+Author/source: met4citizen, TalkingHead project
+Source revision: 1563de184c19b310de4b636664d5835e2c74dbba
+https://github.com/met4citizen/TalkingHead/blob/1563de184c19b310de4b636664d5835e2c74dbba/avatars/mpfb.glb
+
+The source README expressly licenses this asset under CC0 1.0:
+https://github.com/met4citizen/TalkingHead/blob/1563de184c19b310de4b636664d5835e2c74dbba/README.md
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Created using Blender and MPFB / MakeHuman.
+Changes for this catalog: resized textures, reduced geometry precision,
+removed unused morph targets and animations, gzip compression, and a
+rendered preview image. The original TalkingHead runtime is not included.
+
+THREE.JS
+
+The WebGL renderer and GLTFLoader use three.js under the MIT license.
+https://github.com/mrdoob/three.js
+The full license is distributed with the published site in:
+assets/three-LICENSE.txt

@@ -6,11 +6,13 @@ Un punto de acceso en español a las aplicaciones originales de ATLAS Studio, Ph
 
 Solo incluye demos existentes con enlaces directos y capturas reales de sus pantallas. No contiene recorridos recreados, asistentes propios ni integraciones de IA. Cada aplicación documenta su alcance y sus límites por separado. La aplicación específica del cliente queda excluida y el catálogo original permanece sin cambios.
 
-El avatar ilustrado permite escuchar únicamente el título y el párrafo de presentación con la síntesis de voz del navegador (`voice.js`). No es un chat, no usa micrófono ni reproduce audio automáticamente. El botón permite iniciar, detener y repetir la presentación. La disponibilidad y el sonido dependen de las voces en español del navegador o del sistema; los errores o la falta de compatibilidad se muestran junto al botón. La animación es ilustrativa, no sincronización labial fonética.
+La guía es un personaje humano 3D renderizado en el navegador con Three.js (`avatar.js`), no un video de una persona. Lee únicamente el título y el párrafo de presentación mediante la síntesis de voz del navegador (`voice.js`). Incluye parpadeos, movimiento sutil de cabeza y expresiones de boca aproximadas mientras habla; aprovecha los eventos de palabra cuando la voz los ofrece, pero no garantiza sincronización fonética. No es un chat, no usa micrófono ni reproduce audio automáticamente. El botón permite iniciar, detener y repetir la presentación.
+
+La simulación no utiliza recursos de una suscripción de Azure, claves ni servicios de avatar. La voz depende de las opciones en español del navegador o del sistema (algunas pueden necesitar Internet). El modelo 3D y el motor se sirven desde el propio sitio; la descarga del modelo optimizado es de aproximadamente 5–6 MB. Requiere WebGL 2 y un navegador moderno con descompresión gzip. Si falla la animación, se muestra un retrato estático y un aviso; el audio y el catálogo siguen disponibles. Se respeta la preferencia de reducir movimiento para parpadeos y cabeza. Licencias y procedencia en `THIRD_PARTY_NOTICES.txt`.
 
 ## Ejecutar y mantener
 
-Servir la carpeta con cualquier servidor web estático, por ejemplo `python -m http.server 8000`, y abrir `http://localhost:8000`. No requiere instalación ni compilación. Para añadir una demo publicada, agregar su ficha y URL original en `data.js` y una captura en `previews`. La interfaz y estilos están en `app.js`, `index.html` y `style.css`. La búsqueda admite nombres, industrias y temas, con o sin tildes.
+Ejecutar `npm ci`, `npm run build` y `python -m http.server 8000 --directory dist`, y abrir `http://localhost:8000`. La publicación resultante es estática y no requiere servidor de aplicaciones. Para añadir una demo publicada, agregar su ficha y URL original en `data.js` y una captura en `previews`. La interfaz y estilos están en `app.js`, `index.html` y `style.css`. La búsqueda admite nombres, industrias y temas, con o sin tildes.
 
 Ejecutar `node --test tests/*.test.mjs` para verificar búsqueda, enlaces, ausencia de recorridos internos y versionado de archivos publicados.
 
