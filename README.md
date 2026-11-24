@@ -1,6 +1,6 @@
 # Catálogo de demos IA · V2
 
-Un punto de acceso en español a las aplicaciones originales de ATLAS Studio, Pharma y DocuGestión. El catálogo no recrea, incrusta ni modifica las demos: cada enlace abre la aplicación original en una nueva pestaña, con su diseño, sus colores, sus interacciones y su arquitectura.
+Un punto de acceso en español a las aplicaciones originales de ATLAS Studio, Pharma, DocuGestión y Reporting & AI Hub. El catálogo no recrea, incrusta ni modifica las demos: cada enlace abre la aplicación original en una nueva pestaña, con su diseño, sus colores, sus interacciones y su arquitectura.
 
 ## Alcance
 

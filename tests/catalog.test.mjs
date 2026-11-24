@@ -3,11 +3,12 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { demos, filterDemos } from '../data.js';
 
-test('el catálogo enlaza solamente las tres aplicaciones originales', () => {
+test('el catálogo enlaza las aplicaciones originales', () => {
   assert.deepEqual(demos.map(demo => demo.url), [
     'https://danidiazmenendez.github.io/atlas-studio-demo/',
     'https://danidiazmenendez.github.io/pharma-agentic-3d/',
-    'https://danidiazmenendez.github.io/gestion-documental-demo/'
+    'https://danidiazmenendez.github.io/gestion-documental-demo/',
+    'https://danidiazmenendez.github.io/reporting-ai-hub-demo/'
   ]);
 });
 
@@ -15,6 +16,7 @@ test('la búsqueda encuentra nombres y temas, sin distinguir tildes o mayúscula
   assert.deepEqual(filterDemos('  DOCUGESTION ').map(demo => demo.id), ['documental']);
   assert.deepEqual(filterDemos('FARMACEUTICA').map(demo => demo.id), ['farmacia']);
   assert.deepEqual(filterDemos('atlas gobierno').map(demo => demo.id), ['atlas']);
+  assert.deepEqual(filterDemos('reporting permisos').map(demo => demo.id), ['reporting']);
   assert.equal(filterDemos('sin resultados').length, 0);
   assert.equal(filterDemos('  ').length, demos.length);
 });

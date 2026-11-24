@@ -31,6 +31,17 @@ export const demos = [
     preview: 'previews/documental.jpg',
     previewAlt: 'Panel original de DocuGestión: indicadores, documentos pendientes y actividad reciente.',
     accent: 'documental'
+  },
+  {
+    id: 'reporting',
+    name: 'Reporting & AI Hub · Demo POC',
+    category: 'Analítica y reporting · Transversal',
+    description: 'Un hub de reportes con asistente de IA, acceso por roles y simulador de permisos. Incluye vistas de arquitectura actual e ideal y seguridad.',
+    tags: ['Reportes', 'Asistente de IA', 'Roles y permisos'],
+    url: 'https://danidiazmenendez.github.io/reporting-ai-hub-demo/',
+    preview: 'previews/reporting.jpg',
+    previewAlt: 'Pantalla original de Reporting & AI Hub: inicio del usuario simulado, reportes disponibles y navegación de arquitectura y seguridad.',
+    accent: 'reporting'
   }
 ];
 
