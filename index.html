@@ -3,59 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111a24">
-  <meta name="description" content="Experiencias de negocio con IA para Latinoamérica, con datos ficticios y arquitecturas de referencia.">
-  <title>Demo Lab | IA aplicada a negocios</title>
+  <meta name="theme-color" content="#f5f7fa">
+  <meta name="description" content="Acceso directo a ATLAS Studio, Pharma y DocuGestión. Cada demo conserva su diseño, sus interacciones y su arquitectura original.">
+  <title>Catálogo de demos IA · V2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="Demo Lab, inicio"><span class="brand-mark">✳</span><span>demo<span class="brand-light">lab</span><small>Cloud & AI · LATAM</small></span></a>
-    <nav aria-label="Navegación principal"><a href="#experiencias">Experiencias</a><a href="#metodo">Nuestro enfoque</a><a href="https://danidiazmenendez.github.io/catalogodemosia/" target="_blank" rel="noopener noreferrer">Catálogo original ↗</a></nav>
-    <span class="top-pill"><span></span> EDICIÓN 02</span>
+  <header class="site-header">
+    <a class="brand" href="./">Catálogo de demos <strong>IA</strong><span>V2</span></a>
+    <a class="previous" href="https://danidiazmenendez.github.io/catalogodemosia/" target="_blank" rel="noopener noreferrer">Catálogo original <span aria-hidden="true">↗</span></a>
   </header>
-
   <main>
-    <section class="hero" id="inicio">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="tiny-square"></span> UN LABORATORIO DE IDEAS PARA LATINOAMÉRICA</div>
-        <h1>La IA se entiende<br>mejor <em>en acción.</em></h1>
-        <p>Explorá experiencias que conectan desafíos reales de negocio, decisiones humanas y tecnología. De la idea a la arquitectura, en un solo lugar.</p>
-        <div class="hero-actions"><a class="button button-dark" href="#experiencias">Explorar experiencias <span>↘</span></a><a class="text-link" href="#metodo">Cómo funciona <span>→</span></a></div>
-        <div class="hero-note"><span>✦</span> Experiencias en español · Diseñadas para conversar</div>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1>Cada demo, su propia experiencia.</h1>
+        <p>Un solo lugar para encontrarlas. Abrí cada aplicación con su diseño, sus colores, sus interacciones y su arquitectura de referencia originales.</p>
       </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="art-label label-one"><span>✳</span> PERSONAS</div><div class="art-label label-two"><span>✦</span> DATOS</div><div class="art-label label-three"><span>↗</span> DECISIONES</div>
-        <div class="art-core"><div class="core-orb"><span>✳</span></div><div><strong>De una idea</strong><small>a una experiencia</small></div></div>
-        <div class="art-caption">CLOUD + AI <span> / </span> PARA LA REGIÓN</div>
-      </div>
+      <label class="search" for="search">
+        <span>Buscar una demo</span>
+        <input id="search" type="search" placeholder="Nombre, industria o tema…" autocomplete="off">
+      </label>
     </section>
-
-    <div class="ticker" aria-label="Principios del catálogo"><span>✳</span> UNA HISTORIA DE NEGOCIO <span>✳</span> IA EN CONTEXTO <span>✳</span> DECISIONES HUMANAS <span>✳</span> ARQUITECTURA DE REFERENCIA <span>✳</span> DATOS FICTICIOS</div>
-
-    <section class="catalog section-wrap" id="experiencias">
-      <div class="section-heading"><div><div class="eyebrow"><span class="tiny-square"></span> EL CATÁLOGO</div><h2>Una conversación<br><em>para cada desafío.</em></h2></div><p>Elegí una experiencia, recorré el caso y descubrí cómo podría llevarse a la práctica.</p></div>
-      <div class="catalog-tools"><div id="filters" class="filters" role="group" aria-label="Filtrar por industria"></div><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar experiencias</span><input id="search" type="search" placeholder="Buscar un desafío..."></label></div>
-      <div class="catalog-meta"><span id="results-count"></span><span>SELECCIONÁ UNA EXPERIENCIA PARA EXPLORAR ↘</span></div>
+    <section aria-label="Demos disponibles">
+      <div class="catalog-heading"><p id="results-count" role="status" aria-live="polite"></p><span>Los enlaces abren las demos originales en otra pestaña.</span></div>
       <div id="catalog-grid" class="catalog-grid"></div>
-      <p id="empty" class="empty" hidden>No encontramos experiencias con esa búsqueda. Probá con otra palabra o industria.</p>
+      <p id="empty" class="empty" hidden>No encontramos demos con esa búsqueda. Probá con otro nombre, industria o tema.</p>
+      <noscript><p>Accedé directamente a las demos: <a href="https://danidiazmenendez.github.io/atlas-studio-demo/">ATLAS Studio</a>, <a href="https://danidiazmenendez.github.io/pharma-agentic-3d/">Pharma</a> y <a href="https://danidiazmenendez.github.io/gestion-documental-demo/">DocuGestión</a>.</p></noscript>
     </section>
-
-    <section class="featured section-wrap">
-      <div class="featured-inner"><div class="featured-icon">✳</div><div><div class="eyebrow">ADEMÁS · EXPERIENCIA TRANSVERSAL</div><h2>¿Y si cualquiera pudiera<br><em>construir una idea?</em></h2><p>Conocé ATLAS Studio: una experiencia ficticia para explorar el desarrollo asistido por IA y su evolución gobernada.</p><a class="button button-light" href="https://danidiazmenendez.github.io/atlas-studio-demo/" target="_blank" rel="noopener noreferrer">Explorar ATLAS Studio ↗</a></div><div class="featured-aside"><span>NEGOCIO</span><span>+</span><span>TECNOLOGÍA</span><div>Una misma plataforma.<br>Distintas perspectivas.</div></div></div>
-    </section>
-
-    <section class="method section-wrap" id="metodo">
-      <div class="section-heading"><div><div class="eyebrow"><span class="tiny-square"></span> ANTES DE LA TECNOLOGÍA</div><h2>Diseñadas para<br><em>abrir posibilidades.</em></h2></div><p>Una buena demo no termina en una respuesta. Ayuda a imaginar cómo cambia una forma de trabajar.</p></div>
-      <div class="method-grid"><article><span>01 / CONTEXTO</span><h3>Empezá por el desafío</h3><p>Una persona, un problema y una decisión que importan al negocio.</p></article><article><span>02 / EXPERIENCIA</span><h3>Probá el recorrido</h3><p>La IA aparece donde suma: orientando, resumiendo o proponiendo alternativas.</p></article><article><span>03 / ARQUITECTURA</span><h3>Conectá las piezas</h3><p>Visualizá una referencia técnica y distinguí lo simulado de una solución real.</p></article><article><span>04 / CONVERSACIÓN</span><h3>Imaginá el siguiente paso</h3><p>Conversá sobre datos, riesgos y posibilidades de un piloto con tu equipo.</p></article></div>
-    </section>
+    <aside class="catalog-note"><strong>El catálogo solo unifica el acceso.</strong> Cada aplicación es independiente: su recorrido, sus asistentes y su documentación técnica se exploran dentro de la propia demo.</aside>
   </main>
-  <footer><div class="footer-brand"><span>✳</span> demolab <small>Cloud & AI · LATAM</small></div><p>Experiencias de demostración en español. Datos ficticios; no ingreses información sensible.</p><a href="#inicio">Volver arriba ↑</a></footer>
-
-  <dialog id="experience-dialog" aria-labelledby="dialog-title">
-    <div id="experience-content"></div>
-  </dialog>
+  <footer><span>Cloud & AI · LATAM · Demos en español</span><span>Entornos de demostración. No ingreses información sensible.</span></footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>
