@@ -14,11 +14,11 @@ export const demos = [
     id: 'operador',
     name: 'Operador 5.0 · Arquitectura y perfiles',
     category: 'Manufactura · Arquitectura y perfiles',
-    description: 'Una copia independiente de la presentación: planta interactiva, arquitectura técnica y perfiles con sus roles y permisos. Sin mockup ni recorrido de la app.',
+    description: 'El operador en planta con su tablet. Capas y conexiones 3D, perfiles y la arquitectura de la animación implementada. Sin mockup ni pantallas de la app.',
     tags: ['Arquitectura', 'Perfiles', 'Roles y permisos'],
     url: 'https://danidiazmenendez.github.io/operador5-arquitectura-perfiles/',
     preview: 'previews/operador.jpg',
-    previewAlt: 'Arquitectura de referencia de Operador 5.0: capas y componentes sobre la planta original, en la copia sin mockup.',
+    previewAlt: 'Operador 5.0: las diez capas de arquitectura 3D conectadas sobre la planta original, sin mockup.',
     accent: 'operador'
   },
   {
