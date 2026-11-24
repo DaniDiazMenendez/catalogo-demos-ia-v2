@@ -5,6 +5,7 @@ import { demos, filterDemos } from '../data.js';
 
 test('el catálogo enlaza las aplicaciones originales', () => {
   assert.deepEqual(demos.map(demo => demo.url), [
+    'https://danidiazmenendez.github.io/fabrica-en-marcha-demo/',
     'https://danidiazmenendez.github.io/atlas-studio-demo/',
     'https://danidiazmenendez.github.io/pharma-agentic-3d/',
     'https://danidiazmenendez.github.io/gestion-documental-demo/',
@@ -17,6 +18,7 @@ test('la búsqueda encuentra nombres y temas, sin distinguir tildes o mayúscula
   assert.deepEqual(filterDemos('FARMACEUTICA').map(demo => demo.id), ['farmacia']);
   assert.deepEqual(filterDemos('atlas gobierno').map(demo => demo.id), ['atlas']);
   assert.deepEqual(filterDemos('reporting permisos').map(demo => demo.id), ['reporting']);
+  assert.deepEqual(filterDemos('mantenimiento simulacion').map(demo => demo.id), ['fabrica']);
   assert.equal(filterDemos('sin resultados').length, 0);
   assert.equal(filterDemos('  ').length, demos.length);
 });

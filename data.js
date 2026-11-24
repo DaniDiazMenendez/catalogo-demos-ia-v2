@@ -1,5 +1,16 @@
 export const demos = [
   {
+    id: 'fabrica',
+    name: 'Fábrica en marcha',
+    category: 'Manufactura · Continuidad operativa',
+    description: 'Una planta interactiva para anticipar una parada: evidencia de mantenimiento, repuestos, alternativas y su impacto calculado en los pedidos. Incluye arquitectura de referencia.',
+    tags: ['Mantenimiento', 'Simulación', 'Arquitectura'],
+    url: 'https://danidiazmenendez.github.io/fabrica-en-marcha-demo/',
+    preview: 'previews/fabrica.jpg',
+    previewAlt: 'Aplicación original de Fábrica en marcha: planta industrial 3D con cinco estaciones y panel para iniciar el incidente.',
+    accent: 'fabrica'
+  },
+  {
     id: 'atlas',
     name: 'ATLAS Studio',
     category: 'Desarrollo y productividad',
