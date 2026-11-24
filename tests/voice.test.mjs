@@ -65,7 +65,7 @@ test('el avatar recibe inicio, palabras y parada solamente de la narración acti
   const speaking = [];
   const words = [];
   state.elements.onSpeakingChange = value => speaking.push(value);
-  state.elements.onWord = value => words.push(value);
+  state.elements.onWord = (word, index) => words.push({ word, index });
   initVoiceGuide(state.elements, state.speech, state.Utterance);
   state.click();
   const utterance = state.spoken[0];
@@ -74,11 +74,11 @@ test('el avatar recibe inicio, palabras y parada solamente de la narración acti
   utterance.onboundary({ name: 'word', charIndex: 0 });
   utterance.onboundary({ name: 'sentence', charIndex: 0 });
   assert.deepEqual(speaking, [true]);
-  assert.deepEqual(words, ['Cada']);
+  assert.deepEqual(words, [{ word: 'Cada', index: 0 }]);
   state.click();
   utterance.onboundary({ name: 'word', charIndex: 5 });
   assert.deepEqual(speaking, [true, false]);
-  assert.deepEqual(words, ['Cada']);
+  assert.deepEqual(words, [{ word: 'Cada', index: 0 }]);
 });
 
 test('informa falta de compatibilidad o de voz española sin intentar reproducir', () => {

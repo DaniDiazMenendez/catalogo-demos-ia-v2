@@ -64,7 +64,7 @@ export function initVoiceGuide({ button, label, symbol, status, avatar, text, on
     utterance.onboundary = event => {
       if (active !== utterance || event.name !== 'word') return;
       const word = text.slice(event.charIndex).match(/^\S+/)?.[0];
-      if (word) onWord(word);
+      if (word) onWord(word, event.charIndex);
     };
     utterance.onerror = event => {
       if (active !== utterance) return;

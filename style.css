@@ -19,7 +19,7 @@ main { max-width: 1480px; margin: auto; padding: 64px 60px 48px; }
 .intro h1 { font-size: clamp(30px, 3vw, 44px); font-weight: 650; letter-spacing: -.035em; line-height: 1.15; margin: 0 0 18px; text-wrap: balance; }
 .intro p { color: #4a5a70; max-width: 680px; line-height: 1.75; margin: 0; font-size: 16px; }
 .voice-guide { display: flex; align-items: center; gap: 14px; margin-top: 24px; }
-.voice-avatar { position: relative; width: 156px; height: 184px; flex: 0 0 156px; border-radius: 14px; overflow: hidden; border: 1px solid #c5d8ed; background: #e7eff8; }
+.voice-avatar { position: relative; width: 176px; height: 208px; flex: 0 0 176px; border-radius: 14px; overflow: hidden; border: 1px solid #cbd4df; background: #edf0f3; }
 .voice-avatar img, .voice-avatar canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
 .voice-avatar[data-ready="true"] img { visibility: hidden; }
 .voice-title { display: block; font-size: 15px; font-weight: 600; margin-bottom: 12px; }

@@ -23,4 +23,15 @@ test('la publicación cambia las URLs de los módulos según su contenido, inclu
     assert.ok(filename.includes(`.${hash}.`));
     assert.equal(await readFile(`dist/${filename}`, 'utf8'), source);
   }
+  const avatar = await readFile(`dist/${avatarName}`, 'utf8');
+  const modelName = avatar.match(/\.\/(assets\/guide\.glb\.[a-f0-9]{12}\.gz)/)?.[1];
+  const posterName = html.match(/src="(assets\/guide-poster\.[a-f0-9]{12}\.jpg)"/)?.[1];
+  assert.ok(modelName);
+  assert.ok(posterName);
+  for (const [filename, original] of [[modelName, 'assets/guide.glb.gz'], [posterName, 'assets/guide-poster.jpg']]) {
+    const bytes = await readFile(original);
+    const hash = createHash('sha256').update(bytes).digest('hex').slice(0, 12);
+    assert.ok(filename.includes(`.${hash}.`));
+    assert.deepEqual(await readFile(`dist/${filename}`), bytes);
+  }
 });

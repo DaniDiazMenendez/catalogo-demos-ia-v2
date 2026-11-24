@@ -14,7 +14,9 @@ https://creativecommons.org/publicdomain/zero/1.0/
 Created using Blender and MPFB / MakeHuman.
 Changes for this catalog: resized textures, reduced geometry precision,
 removed unused morph targets and animations, gzip compression, and a
-rendered preview image. The original TalkingHead runtime is not included.
+rendered preview image. Runtime changes include softer eyebrow materials,
+reflective eyes, a plain navy top, portrait lighting and new facial motion.
+The original TalkingHead runtime is not included.
 
 THREE.JS
 

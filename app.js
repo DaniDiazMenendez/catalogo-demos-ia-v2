@@ -31,9 +31,12 @@ renderCatalog();
 
 let presenter;
 let speaking = false;
+let currentWord;
+const introduction = `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`;
 import('./avatar.js').then(async ({ initAvatar3D }) => {
   presenter = await initAvatar3D(document.querySelector('#voice-avatar'));
-  presenter.setSpeaking(speaking);
+  presenter.setSpeaking(speaking, introduction);
+  if (speaking && currentWord) presenter.setWord(currentWord.word, currentWord.index);
   document.querySelector('#avatar-status').textContent = 'Simulación 3D · movimiento labial aproximado.';
 }).catch(error => {
   console.error('No se pudo cargar el avatar 3D:', error);
@@ -46,11 +49,15 @@ const stopVoice = initVoiceGuide({
   symbol: document.querySelector('#voice-symbol'),
   status: document.querySelector('#voice-status'),
   avatar: document.querySelector('#voice-avatar'),
-  text: `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`,
+  text: introduction,
   onSpeakingChange(value) {
     speaking = value;
-    presenter?.setSpeaking(value);
+    currentWord = undefined;
+    presenter?.setSpeaking(value, introduction);
   },
-  onWord(word) { presenter?.setWord(word); }
+  onWord(word, index) {
+    currentWord = { word, index };
+    presenter?.setWord(word, index);
+  }
 }, window.speechSynthesis, window.SpeechSynthesisUtterance);
 window.addEventListener('pagehide', stopVoice);
