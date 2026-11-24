@@ -13,12 +13,12 @@ export const demos = [
   {
     id: 'operador',
     name: 'Planta Conectada',
-    category: 'Manufactura · Arquitectura y perfiles',
-    description: 'Una planta industrial en 3D para explorar el trabajo del operador, los roles y permisos del equipo y su arquitectura de referencia con Microsoft Cloud, IA y datos.',
-    tags: ['Arquitectura', 'Perfiles', 'Roles y permisos'],
+    category: 'Manufactura · Operación asistida',
+    description: 'Acompañá al operador Alex por una planta industrial 3D, gestioná tareas del turno y conversá con Nexo, su asistente de demostración. Con perfiles y arquitectura Microsoft Cloud.',
+    tags: ['Tareas', 'Asistente IA', 'Arquitectura', 'Perfiles', 'Roles y permisos'],
     url: 'https://danidiazmenendez.github.io/operador5-arquitectura-perfiles/',
-    preview: 'previews/planta-conectada.jpg',
-    previewAlt: 'Planta Conectada: diez capas de arquitectura 3D conectadas sobre una planta industrial.',
+    preview: 'previews/planta-conectada-turno.jpg',
+    previewAlt: 'Planta Conectada: Alex con su tablet frente a Cinta 3 y el panel interactivo de tareas del turno.',
     accent: 'operador'
   },
   {

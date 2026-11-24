@@ -22,6 +22,7 @@ test('la búsqueda encuentra nombres y temas, sin distinguir tildes o mayúscula
   assert.deepEqual(filterDemos('mantenimiento simulacion').map(demo => demo.id), ['fabrica']);
   assert.deepEqual(filterDemos('OPERADOR perfiles').map(demo => demo.id), ['operador']);
   assert.deepEqual(filterDemos('PLANTA CONECTADA').map(demo => demo.id), ['operador']);
+  assert.deepEqual(filterDemos('Nexo tareas').map(demo => demo.id), ['operador']);
   assert.equal(filterDemos('sin resultados').length, 0);
   assert.equal(filterDemos('  ').length, demos.length);
 });
