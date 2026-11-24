@@ -35,6 +35,7 @@ main { max-width: 1480px; margin: auto; padding: 64px 60px 48px; }
 .pharma { --accent: #6c4ac9; }
 .documental { --accent: #037c84; }
 .fabrica { --accent: #067565; }
+.operador { --accent: #9b410d; }
 .demo-link { text-decoration: none; display: flex; flex-direction: column; height: 100%; }
 .demo-card:hover { border-color: var(--accent); box-shadow: 0 9px 24px #17243b12; }
 .preview { aspect-ratio: 1.6; overflow: hidden; background: #e8edf4; border-bottom: 1px solid #e1e6ee; }

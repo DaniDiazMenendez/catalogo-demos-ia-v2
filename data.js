@@ -11,6 +11,17 @@ export const demos = [
     accent: 'fabrica'
   },
   {
+    id: 'operador',
+    name: 'Operador 5.0 · Arquitectura y perfiles',
+    category: 'Manufactura · Arquitectura y perfiles',
+    description: 'Una copia independiente de la presentación: planta interactiva, arquitectura técnica y perfiles con sus roles y permisos. Sin mockup ni recorrido de la app.',
+    tags: ['Arquitectura', 'Perfiles', 'Roles y permisos'],
+    url: 'https://danidiazmenendez.github.io/operador5-arquitectura-perfiles/',
+    preview: 'previews/operador.jpg',
+    previewAlt: 'Arquitectura de referencia de Operador 5.0: capas y componentes sobre la planta original, en la copia sin mockup.',
+    accent: 'operador'
+  },
+  {
     id: 'atlas',
     name: 'ATLAS Studio',
     category: 'Desarrollo y productividad',
