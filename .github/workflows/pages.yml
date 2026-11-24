@@ -29,22 +29,37 @@ jobs:
           node --test tests/*.test.mjs
           node build.mjs
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - id: upload
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-      - name: Esperar disponibilidad del artefacto de Pages
+          name: github-pages-${{ github.run_attempt }}
+      - name: Publicar el artefacto cargado por su identificador
+        id: deployment
+        uses: actions/github-script@v8
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          for attempt in {1..10}; do
-            artifact_id=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq '.artifacts[] | select(.name == "github-pages" and .expired == false) | .id')
-            if [ -n "$artifact_id" ]; then
-              echo "Artefacto de Pages disponible: $artifact_id"
-              exit 0
-            fi
-            sleep 3
-          done
-          echo "::error::El artefacto de Pages no está disponible después de la carga."
-          exit 1
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          PAGES_ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        with:
+          script: |
+            const artifactId = Number(process.env.PAGES_ARTIFACT_ID);
+            if (!Number.isSafeInteger(artifactId) || artifactId <= 0) throw new Error('Falta el identificador del artefacto cargado.');
+            const { data: deployment } = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              ...context.repo,
+              artifact_id: artifactId,
+              pages_build_version: context.sha,
+              oidc_token: await core.getIDToken()
+            });
+            const target = { ...context.repo, deployment_id: deployment.id };
+            const failures = ['deployment_failed', 'deployment_content_failed', 'deployment_cancelled', 'deployment_lost'];
+            for (let attempt = 0; attempt < 120; attempt++) {
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              const { data } = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{deployment_id}', target);
+              core.info(`Pages: ${data.status}`);
+              if (data.status === 'succeed') {
+                core.setOutput('page_url', deployment.page_url);
+                return;
+              }
+              if (failures.includes(data.status)) throw new Error(`No se pudo publicar: ${data.status}`);
+            }
+            await github.request('POST /repos/{owner}/{repo}/pages/deployments/{deployment_id}/cancel', target);
+            throw new Error('La publicación excedió los diez minutos y fue cancelada.');
