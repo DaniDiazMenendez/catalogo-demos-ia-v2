@@ -1,4 +1,5 @@
 import { filterDemos } from './data.js';
+import { initVoiceGuide } from './voice.js';
 
 const grid = document.querySelector('#catalog-grid');
 const search = document.querySelector('#search');
@@ -27,3 +28,13 @@ function renderCatalog() {
 
 search.addEventListener('input', renderCatalog);
 renderCatalog();
+
+const stopVoice = initVoiceGuide({
+  button: document.querySelector('#voice-toggle'),
+  label: document.querySelector('#voice-label'),
+  symbol: document.querySelector('#voice-symbol'),
+  status: document.querySelector('#voice-status'),
+  avatar: document.querySelector('#voice-avatar'),
+  text: `${document.querySelector('#page-title').textContent} ${document.querySelector('#intro-description').textContent}`
+}, window.speechSynthesis, window.SpeechSynthesisUtterance);
+window.addEventListener('pagehide', stopVoice);

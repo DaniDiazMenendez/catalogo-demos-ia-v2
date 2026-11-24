@@ -13,7 +13,10 @@ async function writeVersioned(name, content) {
 }
 
 const dataName = await writeVersioned('data.js', await readFile('data.js', 'utf8'));
-const app = (await readFile('app.js', 'utf8')).replace("'./data.js'", `'./${dataName}'`);
+const voiceName = await writeVersioned('voice.js', await readFile('voice.js', 'utf8'));
+const app = (await readFile('app.js', 'utf8'))
+  .replace("'./data.js'", `'./${dataName}'`)
+  .replace("'./voice.js'", `'./${voiceName}'`);
 const appName = await writeVersioned('app.js', app);
 const styleName = await writeVersioned('style.css', await readFile('style.css', 'utf8'));
 const html = (await readFile('index.html', 'utf8'))
