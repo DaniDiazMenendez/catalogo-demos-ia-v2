@@ -18,9 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verificar catálogo y preparar publicación
+        run: |
+          node --test tests/*.test.mjs
+          node build.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: dist
       - id: deployment
         uses: actions/deploy-pages@v4

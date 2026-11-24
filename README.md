@@ -10,6 +10,6 @@ Solo incluye demos existentes con enlaces directos y capturas reales de sus pant
 
 Servir la carpeta con cualquier servidor web estático, por ejemplo `python -m http.server 8000`, y abrir `http://localhost:8000`. No requiere instalación ni compilación. Para añadir una demo publicada, agregar su ficha y URL original en `data.js` y una captura en `previews`. La interfaz y estilos están en `app.js`, `index.html` y `style.css`. La búsqueda admite nombres, industrias y temas, con o sin tildes.
 
-Ejecutar `node --test tests/catalog.test.mjs` para verificar búsqueda, enlaces y ausencia de recorridos internos.
+Ejecutar `node --test tests/*.test.mjs` para verificar búsqueda, enlaces, ausencia de recorridos internos y versionado de archivos publicados.
 
-El workflow de GitHub Actions publica la carpeta en GitHub Pages al actualizar `main`. En la configuración del repositorio, seleccionar GitHub Actions como origen de Pages.
+El workflow de GitHub Actions ejecuta las pruebas y `node build.mjs` y publica `dist` en GitHub Pages al actualizar `main`. Los nombres de los módulos y estilos publicados incluyen una huella de su contenido, para que las actualizaciones del catálogo no reutilicen datos viejos de la caché. Para previsualizar la publicación, ejecutar `node build.mjs` y `python -m http.server 8000 --directory dist`. En la configuración del repositorio, seleccionar GitHub Actions como origen de Pages.
