@@ -30,12 +30,16 @@ test('lee solo la presentación visible, sin reproducción automática, y permit
   const page = await readFile('index.html', 'utf8');
   const visible = `${page.match(/id="page-title">([^<]+)</)[1]} ${page.match(/id="intro-description">([^<]+)</)[1]}`;
   assert.equal(visible, text);
-  const state = setup();
+  const state = setup([
+    { lang: 'es-AR', name: 'Microsoft Tomas Online' },
+    { lang: 'es-AR', name: 'Microsoft Elena Online' }
+  ]);
   initVoiceGuide(state.elements, state.speech, state.Utterance);
   assert.equal(state.spoken.length, 0);
   state.click();
   assert.equal(state.spoken[0].text, visible);
   assert.equal(state.spoken[0].lang, 'es-AR');
+  assert.equal(state.spoken[0].voice.name, 'Microsoft Elena Online');
   state.spoken[0].onstart();
   assert.equal(state.classes.has('is-speaking'), true);
   state.spoken[0].onend();

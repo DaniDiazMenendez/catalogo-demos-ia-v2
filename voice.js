@@ -40,12 +40,13 @@ export function initVoiceGuide({ button, label, symbol, status, avatar, text, on
     }
 
     const utterance = new Utterance(text);
-    const voice = spanish.find(voice => /^es[-_]AR$/i.test(voice.lang))
+    const voice = spanish.find(voice => /^es[-_]AR$/i.test(voice.lang) && /Elena/i.test(voice.name || ''))
+      || spanish.find(voice => /^es[-_]AR$/i.test(voice.lang))
       || spanish.find(voice => voice.localService)
       || spanish[0];
     if (voice) utterance.voice = voice;
     utterance.lang = voice?.lang || 'es-AR';
-    utterance.rate = 0.95;
+    utterance.rate = 1;
     active = utterance;
     button.setAttribute('aria-pressed', 'true');
     label.textContent = 'Detener audio';
