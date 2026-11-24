@@ -12,13 +12,13 @@ export const demos = [
   },
   {
     id: 'operador',
-    name: 'Operador 5.0 · Arquitectura y perfiles',
+    name: 'Planta Conectada',
     category: 'Manufactura · Arquitectura y perfiles',
-    description: 'El operador en planta con su tablet. Capas y conexiones 3D, perfiles y la arquitectura de la animación implementada. Sin mockup ni pantallas de la app.',
+    description: 'Una planta industrial en 3D para explorar el trabajo del operador, los roles y permisos del equipo y su arquitectura de referencia con Microsoft Cloud, IA y datos.',
     tags: ['Arquitectura', 'Perfiles', 'Roles y permisos'],
     url: 'https://danidiazmenendez.github.io/operador5-arquitectura-perfiles/',
-    preview: 'previews/operador.jpg',
-    previewAlt: 'Operador 5.0: las diez capas de arquitectura 3D conectadas sobre la planta original, sin mockup.',
+    preview: 'previews/planta-conectada.jpg',
+    previewAlt: 'Planta Conectada: diez capas de arquitectura 3D conectadas sobre una planta industrial.',
     accent: 'operador'
   },
   {

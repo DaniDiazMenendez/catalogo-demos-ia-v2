@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { demos, filterDemos } from '../data.js';
 
-test('el catálogo enlaza las aplicaciones independientes y la copia del operador', () => {
+test('el catálogo enlaza las seis aplicaciones independientes', () => {
   assert.deepEqual(demos.map(demo => demo.url), [
     'https://danidiazmenendez.github.io/fabrica-en-marcha-demo/',
     'https://danidiazmenendez.github.io/operador5-arquitectura-perfiles/',
@@ -21,6 +21,7 @@ test('la búsqueda encuentra nombres y temas, sin distinguir tildes o mayúscula
   assert.deepEqual(filterDemos('reporting permisos').map(demo => demo.id), ['reporting']);
   assert.deepEqual(filterDemos('mantenimiento simulacion').map(demo => demo.id), ['fabrica']);
   assert.deepEqual(filterDemos('OPERADOR perfiles').map(demo => demo.id), ['operador']);
+  assert.deepEqual(filterDemos('PLANTA CONECTADA').map(demo => demo.id), ['operador']);
   assert.equal(filterDemos('sin resultados').length, 0);
   assert.equal(filterDemos('  ').length, demos.length);
 });

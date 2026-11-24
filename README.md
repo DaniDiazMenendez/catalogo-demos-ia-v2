@@ -1,12 +1,12 @@
 # Catálogo de demos IA · V2
 
-Un punto de acceso en español a Fábrica en marcha, Operador 5.0 · Arquitectura y perfiles, ATLAS Studio, Pharma, DocuGestión y Reporting & AI Hub. El catálogo no recrea, incrusta ni modifica las demos: cada enlace abre la aplicación independiente en una nueva pestaña, con su diseño, sus colores, sus interacciones y su arquitectura.
+Un punto de acceso en español a Fábrica en marcha, Planta Conectada, ATLAS Studio, Pharma, DocuGestión y Reporting & AI Hub. El catálogo no recrea, incrusta ni modifica las demos: cada enlace abre la aplicación independiente en una nueva pestaña, con su diseño, sus colores, sus interacciones y su arquitectura.
 
 Fábrica en marcha es una aplicación independiente de manufactura y continuidad operativa, con una escena industrial original, cinco estaciones, decisiones con impacto calculado sobre pedidos y arquitectura de referencia. Sus datos, documentos y asistencia son simulados; no reutiliza la app, el código ni los mockups de un cliente.
 
 ## Alcance
 
-Solo incluye demos existentes con enlaces directos y capturas reales de sus pantallas. No contiene recorridos recreados, asistentes propios ni integraciones de IA. Cada aplicación documenta su alcance y sus límites por separado. La versión completa del operador específica del cliente sigue fuera del catálogo y no se modifica; se incorpora únicamente una copia independiente, «Operador 5.0 · Arquitectura y perfiles», sin mockup, pantallas ni recorrido de la app. Conserva la planta, la estética, las diez capas técnicas y los seis perfiles funcionales, con nombres genéricos. Incluye al operador con una tablet neutra, las capas y conexiones 3D sobre la planta y un diagrama de la implementación real de la animación (Vite, Three.js y GitHub Pages), diferenciado del diseño Microsoft propuesto. El catálogo original permanece sin cambios.
+Solo incluye demos existentes con enlaces directos y capturas reales de sus pantallas. No contiene recorridos recreados, asistentes propios ni integraciones de IA. Cada aplicación documenta su alcance y sus límites por separado. Planta Conectada presenta el trabajo del operador en una planta industrial, diez capas técnicas y seis perfiles funcionales con sus roles y permisos. Incluye al operador con su tablet, las capas y conexiones 3D sobre la planta y un diagrama de la implementación real de la animación (Vite, Three.js y GitHub Pages), diferenciado del diseño Microsoft propuesto. El catálogo original permanece sin cambios.
 
 El botón «Escuchar presentación» lee únicamente el título y el párrafo de bienvenida mediante la síntesis de voz del navegador (`voice.js`). Permite iniciar, detener y repetir el audio; no es un chat, no usa micrófono ni reproduce automáticamente. Se retiró el avatar 3D porque su animación labial aproximada no ofrecía la sincronización esperada. No se descargan modelos, imágenes de personajes ni motores 3D.
 
